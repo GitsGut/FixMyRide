@@ -1,0 +1,290 @@
+/* Existing CSS remains unchanged */
+.hero-section h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-top: 10px;
+}
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.vehicle-ai-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.posi
+{
+  margin-right: 0;
+}
+
+.vehicle-ai-fab img {
+  width: 30px;
+  height: 30px;
+}
+.btn-animated::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  top: 0;
+  left: -100%;
+  transition: all 0.3s ease;
+}
+
+.btn-animated:hover::after {
+  left: 0;
+}
+
+.btn-animated:hover {
+  transform: scale(1.05);
+}
+
+.counter-box h3 {
+  color: #ffc107;
+}
+
+/* Admin Hero Section */
+.admin-hero .content h1 {
+  font-size: 3rem;
+ 
+}
+
+
+
+
+.admin-hero .btn {
+  padding: 7px 17px;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.admin-hero .btn-outline {
+  background: transparent;
+  border: 2px solid #dc3545;
+}
+
+
+/* Admin Features Section */
+.admin-features {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.admin-features h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.feature-box h5 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Stats Section */
+.stats-section {
+  border-radius: 12px;
+  padding: 40px 20px;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.counter-box h3 {
+  font-size: 2.5rem;
+}
+
+.counter-box p {
+  font-size: 1.2rem;
+}
+/* Keep existing styles */
+.hero-section h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-animated::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  top: 0;
+  left: -100%;
+  transition: all 0.3s ease;
+}
+
+.btn-animated:hover::after {
+  left: 0;
+}
+
+.btn-animated:hover {
+  transform: scale(1.05);
+}
+
+.counter-box h3 {
+  color: #ffc107;
+}
+
+/* Super Admin Hero Section */
+.super-admin-hero .content h1 {
+  font-size: 3rem;
+}
+
+.super-admin-hero .content h2 {
+  font-size: 2rem;
+}
+
+.super-admin-hero .btn {
+  padding: 7px 17px;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.super-admin-hero .btn-outline {
+  background: transparent;
+  border: 2px solid #dc3545;
+}
+
+/* Super Admin Features Section */
+.super-admin-features {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.super-admin-features h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.feature-box h5 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Stats Section */
+.stats-section {
+  border-radius: 12px;
+  padding: 40px 20px;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.counter-box h3 {
+  font-size: 2.5rem;
+}
+
+.counter-box p {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .super-admin-hero .content h1 {
+    font-size: 2rem;
+  }
+  .super-admin-hero .content h2 {
+    font-size: 1.5rem;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-hero .content h1 {
+    font-size: 2rem;
+  }
+  .admin-hero .content h2 {
+    font-size: 1.5rem;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

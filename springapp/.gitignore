@@ -1,0 +1,24 @@
+# ===== SPRING BOOT =====
+springapp/target/
+springapp/*.jar
+springapp/*.war
+springapp/*.class
+
+# SECRETS - NEVER PUSH
+springapp/src/main/resources/application.properties
+springapp/src/main/resources/application-default.properties
+springapp/src/main/resources/application-prod.properties
+
+# IDE
+.idea/
+*.iml
+.settings/
+.classpath
+.project
+
+
+
+# ===== GENERAL =====
+.vscode/
+.DS_Store
+*.log

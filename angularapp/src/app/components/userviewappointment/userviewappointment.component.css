@@ -1,0 +1,266 @@
+
+.appointment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 30px;
+  background-color: #fafafa;
+}
+
+
+.appointment-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 6px solid transparent;
+  cursor: pointer;
+}
+
+.appointment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  border-left-color: #e53935;
+}
+
+.appointment-card h3 {
+  color: #e53935;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.appointment-details p {
+  margin: 6px 0;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+
+.appointment-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.appointment-actions button {
+  padding: 8px 14px;
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.appointment-actions button:hover {
+  background-color: #c62828;
+}
+
+.appointment-actions button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+
+.container-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+  z-index: 998;
+}
+
+
+.appointment-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 80vh;
+  padding: 24px 32px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  overflow-y: auto;
+  animation: popupFade 0.3s ease;
+}
+
+
+.appointment-container::-webkit-scrollbar { width: 6px; }
+.appointment-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.appointment-container::-webkit-scrollbar-track { background: transparent; }
+
+.container-header {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.container-content {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.container-left {
+  flex: 2;
+  color: #333;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.container-left h4 {
+  color: #e53935;
+  margin: 10px 0 6px;
+  font-weight: 600;
+}
+
+
+.container-left p {
+  margin: 4px 0;
+  color: #212121;
+  margin-left: 12px;
+  padding-left: 12px;
+}
+
+
+.container-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-title {
+  margin-bottom: 20px;
+  color: #e53935;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.status-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.status-track::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 20px;
+  width: 3px;
+  background-color: #ddd;
+  z-index: 0;
+}
+
+.status-track > div {
+  display: flex;
+  align-items: center;
+  margin: 28px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.status-track i {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.status-track label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+}
+
+
+.status-track .complete i {
+  background-color: rgb(16, 204, 16);
+  color: #fff;
+  border-color: rgb(16, 204, 16);
+}
+.status-track .complete label {
+  color: rgb(16, 204, 16);
+}
+
+.status-track .current i {
+  background-color: #e53935;
+  color: #fff;
+  border-color: #e53935;
+  transform: scale(1.1);
+}
+.status-track .current label {
+  color: #e53935;
+}
+
+
+.status-track .future i {
+  background-color: #f5f5f5;
+  color: #999;
+  border-color: #ccc;
+}
+.status-track .future label {
+  color: #888;
+}
+
+.close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.close-btn:hover {
+  background-color: #c62828;
+  transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+  .container-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container-left {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,70 @@
+<div class="category">
+  
+  <div class="category-bar">
+    <app-error *ngIf="isError" [message]="errorMessage"></app-error>
+
+    
+    <div
+      class="category-card"
+      *ngFor="let cat of categories"
+      [class.active]="cat.name === selectedCategory"
+      (click)="selectCategory(cat.name)" onkeypress
+    >
+      <i class="bi bi-bicycle category-icon"></i>
+      <h5>{{ cat.name }}</h5>
+    </div>
+  </div>
+
+  
+  <div class="content-layout">
+   
+    <div class="service-list">
+      <div
+        class="service-card"
+        *ngFor="let service of filteredServices"
+        (click)="viewDetails(service.serviceId)"
+     onkeypress >
+        <div class="card-content">
+          <div class="card-image">
+            <img src="../../../assets/BikeImg.jpg" alt="{{ service.serviceName }}" />
+          </div>
+          <div class="card-details">
+            <h3>{{ service.serviceName }}</h3>
+            <p class="description">{{ service.shortDescription }}</p>
+
+            <div class="price-section">
+              <span class="original-price">₹{{ service.servicePrice + 500 }}</span>
+              <span class="discounted-price">₹{{ service.servicePrice }}</span>
+              <span class="extra-off">Extra ₹500 OFF</span>
+            </div>
+
+            <div class="service-icons">
+              <i class="bi bi-shield-check" title="Warranty"></i>
+              <i class="bi bi-tag-fill" title="Discount"></i>
+              <i class="bi bi-tools" title="Genuine Parts"></i>
+              <i class="bi bi-clock-history" title="Quick Service"></i>
+            </div>
+            <div *ngIf="service.status === 'ACTIVE'; else unavailable">
+              <button class="book-btn" (click)="bookAppointment(service.serviceId); $event.stopPropagation()">
+                <i class="bi bi-calendar-check-fill me-2"></i>Book Appointment
+              </button>
+            </div>
+            <ng-template #unavailable>
+              <p style="color: red; font-weight: bold;">Service is unavailable</p>
+              </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="highlights-box">
+      <h5>Why Choose Our Services?</h5>
+      <ul class="highlights-list">
+        <li><i class="bi bi-shield-check"></i> 6 Months Warranty on All Services</li>
+        <li><i class="bi bi-tools"></i> Certified Mechanics & Genuine Parts</li>
+        <li><i class="bi bi-clock-history"></i> Quick Turnaround Time</li>
+        <li><i class="bi bi-cash-coin"></i> Transparent Pricing – No Hidden Charges</li>
+      </ul>
+    </div>
+  </div>

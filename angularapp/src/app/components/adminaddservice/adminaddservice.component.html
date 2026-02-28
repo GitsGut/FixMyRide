@@ -1,0 +1,105 @@
+<app-error *ngIf="isError" [message]="errorMessage"></app-error>
+
+<div class="form-container">
+  <h2 class="form-title">
+    {{ isEditing ? 'Update Service' : 'Add Service' }}
+  </h2>
+
+  <form #vehicleForm="ngForm" (ngSubmit)="addOrUpdateService(vehicleForm)" class="form-box">
+    
+    
+    <div *ngIf="currentStep === 1">
+     
+      <div class="form-group">
+        <label for="serviceName">Service Name</label>
+        <input type="text" id="serviceName" name="serviceName" [(ngModel)]="vehicle.serviceName" required #serviceName="ngModel" />
+        <div *ngIf="serviceName.invalid && serviceName.touched" class="error-text">Service Name is required.</div>
+      </div>
+
+     
+      <div class="form-group">
+        <label for="servicePrice">Service Price</label>
+        <input type="number" id="servicePrice" name="servicePrice" [(ngModel)]="vehicle.servicePrice" required min="0" #servicePrice="ngModel" />
+        <div *ngIf="servicePrice.touched && servicePrice.value < 0" class="error-text">Price must be a positive number.</div>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="typeOfVehicle">Type of Vehicle</label>
+        <select id="typeOfVehicle" name="typeOfVehicle" [(ngModel)]="vehicle.typeOfVehicle" (change)="onVehicleTypeChange()" required #typeOfVehicle="ngModel">
+          <option value="" disabled selected>Select vehicle type</option>
+          <option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</option>
+        </select>
+        <div *ngIf="typeOfVehicle.invalid && typeOfVehicle.touched" class="error-text">Please select a vehicle type.</div>
+      </div>
+
+     
+      <div class="form-group">
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration" [(ngModel)]="vehicle.duration" required #duration="ngModel" />
+        <div *ngIf="duration.invalid && duration.touched" class="error-text">Duration is required.</div>
+      </div>
+
+      
+    <button type="button" class="btn-red" [disabled]="!serviceName.valid || !servicePrice.valid || !typeOfVehicle.valid || !duration.valid "(click)="currentStep = 2">Next</button>
+
+    </div>
+
+    
+    <div *ngIf="currentStep === 2">
+      
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="category" [(ngModel)]="vehicle.category" required #category="ngModel">
+          <option value="" disabled selected>Select category</option>
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+        <div *ngIf="category.invalid && category.touched" class="error-text">Category is required.</div>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" name="status" [(ngModel)]="vehicle.status" required #status="ngModel">
+          <option value="" disabled selected>Select status</option>
+          <option value="ACTIVE">ACTIVE</option>
+          <option value="INACTIVE">INACTIVE</option>
+        </select>
+        <div *ngIf="status.invalid && status.touched" class="error-text">Please select a status.</div>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="shortDescription">Service Summary</label>
+        <input type="text" id="shortDescription" name="shortDescription" [(ngModel)]="vehicle.shortDescription" required #shortDescription="ngModel" />
+        <div *ngIf="shortDescription.invalid && shortDescription.touched" class="error-text">Short Description is required.</div>
+      </div>
+
+     
+      <div class="form-group">
+        <label for="longDescription">Detailed Description</label>
+        <textarea id="longDescription" name="longDescription" rows="4" [(ngModel)]="vehicle.longDescription" required #longDescription="ngModel"></textarea>
+        <div *ngIf="longDescription.invalid && longDescription.touched" class="error-text">Long Description is required.</div>
+      </div>
+
+      
+      <button type="button" class="btn-red" (click)="currentStep = 1">Back</button>
+
+      
+      <button type="submit" class="btn-red" [disabled]="vehicleForm.invalid">
+        {{ isEditing ? 'Update' : 'Add' }} Service
+      </button>
+
+      
+      <div *ngIf="isEditing" class="form-group">
+        <button type="button" class="btn-red" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="showSuccessPopup" class="popup-overlay">
+    <div class="popup-box">
+      <h4>{{ successMessage }}</h4>
+      <button class="ok-btn" (click)="closePopup()">OK</button>
+    </div>
+  </div>

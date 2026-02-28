@@ -1,0 +1,212 @@
+/* Fullscreen modal background */
+
+
+.model {
+ position: relative;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../../../assets/background.webp') no-repeat center center/cover;
+
+}
+
+/* Dialog box styling */
+.modal-content.profile-dialog {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+}
+
+/* Header with icon */
+.profile-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Edit icon styling */
+.edit-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.edit-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Profile details */
+.profile-view p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Form inputs */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.button-group button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button-group .btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.button-group .btn-secondary,
+.button-group .btn-outline-danger {
+  background-color: #6c757d;
+  color: white;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.show-otp-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.show-otp-modal .modal-content {
+  width: 400px;
+  max-width: 90%;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  color: #000;
+  text-align: center;
+}
+.show-verification-choice-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1040;
+}
+
+.show-verification-choice-modal .modal-content {
+  width: 350px;
+  max-width: 90%;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  color: #000;
+  text-align: center;
+}
+/* ✅ Button Styling */
+.btn-primary {
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  
+}
+
+/* ✅ Resend Link */
+.resend-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+/* ✅ Timer Text */
+.timer-text {
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+/* ✅ OTP Boxes Container */
+.otp-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* Space between boxes */
+  margin-top: 1rem;
+  flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+/* ✅ Individual OTP Input Styling */
+.otp-input {
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+}
+
+

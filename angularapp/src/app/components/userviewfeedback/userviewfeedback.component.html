@@ -1,0 +1,25 @@
+<div class="container mt-5 p-4 bg-white text-dark border border-dark rounded shadow">
+  <h4 class="mb-4 fw-bold text-center">User Feedbacks</h4>
+
+  <div *ngIf="feedbacks.length === 0" class="text-center text-muted">
+    No feedbacks available.
+  </div>
+
+  <div class="feedback-list">
+    <div class="feedback-card" *ngFor="let feedback of feedbacks; index as i">
+      <div class="feedback-header">
+        <span class="feedback-index">{{feedback?.service.serviceName }}</span>
+        <div class="stars">
+          <i *ngFor="let star of [1,2,3,4,5]" class="bi"
+             [ngClass]="star <= feedback.rating ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+        </div>
+      </div>
+      <p class="feedback-message">{{ feedback.message }}</p>
+      <div class="feedback-actions">
+        <button class="btn btn-outline-danger btn-sm" (click)="deleteFeedback(feedback.feedbackId)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

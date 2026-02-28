@@ -1,0 +1,67 @@
+ 
+<div class="vehicle">
+ 
+  <div class="vehicle-section text-center ">
+    <div *ngIf="!showForm" class="select">
+    <h2  class="fw-bold mb-5">Select Your Vehicle and See Prices</h2>
+   
+  
+    <div class="vehicle-type-selection d-flex justify-content-center gap-5 flex-wrap">
+      <div class="vehicle-box" (click)="selectVehicleType('Bike')" onkeypress>
+        <i class="bi bi-bicycle icon"></i>
+        <h4 class="mt-3">Bike</h4>
+      </div>
+      <div class="vehicle-box" (click)="selectVehicleType('Car')" onkeypress>
+        <i class="bi bi-car-front icon"></i>
+        <h4 class="mt-3">Car</h4>
+      </div>
+    </div>
+   
+    </div>
+   
+    
+    <div class="form"> 
+      <div *ngIf="showForm" class="vehicle-form">  
+      
+      <div class="text-start">
+        <button class="btn btn-back mb-3" (click)="showForm = false">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+      </div>
+          <h4 class="mb-4">Enter Vehicle Details</h4>
+      
+          <div class="form-group mb-3">
+            <label for="brand">Select Brand</label>
+            <select id="brand" [(ngModel)]="vehicle.brandName" #brand="ngModel" (change)="onBrandChange()" required class="form-select">
+              <option value="" disabled selected>Select Brand</option>
+              <option *ngFor="let brand of brands" [value]="brand.name">{{ brand.name }}</option>
+            </select>
+            <p class="error-msg" *ngIf="brand.touched && brand.invalid">Brand is required.</p>
+          </div>
+      
+          <div class="form-group mb-3">
+            <label for="model">Select Model</label>
+            <select id="model" [(ngModel)]="vehicle.modelName" #model="ngModel" required class="form-select">
+              <option value="" disabled selected>Select Model</option>
+              <option *ngFor="let model of filteredModels" [value]="model.name">{{ model.name }}</option>
+            </select>
+            <p class="error-msg" *ngIf="model.touched && model.invalid">Model is required.</p>
+          </div>
+      
+          <div class="form-group mb-3">
+            <label for="fuelType">Select Fuel Type</label>
+            <select id="fuelType" [(ngModel)]="vehicle.fuelType" #fuelType="ngModel" required class="form-select">
+              <option value="" disabled selected>Select Fuel Type</option>
+              <option *ngFor="let fuel of fuelTypes" [value]="fuel.name">{{ fuel.name }}</option>
+            </select>
+            <p class="error-msg" *ngIf="fuelType.touched && fuelType.invalid">Fuel type is required.</p>
+          </div>
+      
+          <button class="btn btn-danger px-4" [disabled]="!vehicle.brandName || !vehicle.modelName || !vehicle.fuelType" (click)="submitForm()">
+            Submit
+          </button>
+          <app-error *ngIf="isError" [message]="errorMessage"></app-error>
+        </div>
+   </div>
+  </div>
+ </div>

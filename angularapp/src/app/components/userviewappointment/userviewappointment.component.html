@@ -1,0 +1,96 @@
+<div class="appointment-grid">
+  <div *ngFor="let appointment of appointments" class="appointment-card">
+    <h3 class="red-text">Appointment No.{{ appointment.appointmentId }}</h3>
+
+    <div class="appointment-details">
+      <p><strong>Slot:</strong> {{ appointment.slot }}</p>
+      <p><strong>Date:</strong> {{ appointment.appointmentDate | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Vehicle Type:</strong> {{ appointment.vehicle.vehicleType }}</p>
+      <p><strong>Service Name:</strong> {{ appointment.service.serviceName }}</p>
+      <p><strong>Status:</strong> {{ appointment.status }}</p>
+      <p><strong>Payment Type:</strong> {{ appointment.paymentType }}</p>
+    </div>
+
+    <div class="appointment-actions">
+      <button (click)="openDetails(appointment)">View Details</button>
+      <button
+        [disabled]="appointment.status !== 'Completed'"
+        (click)="addFeedback(appointment)"
+      >
+        Add Feedback
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="selectedAppointment" class="container-backdrop" onkeypress (click)="closeDetails()"></div>
+
+
+<div *ngIf="selectedAppointment" class="appointment-container">
+  <div class="container-header">
+    <h2>Appointment Details</h2>
+    <button class="close-btn" (click)="closeDetails()">✕</button>
+  </div>
+
+  <div class="container-content">
+    <div class="container-left">
+   
+      <h4>User Details</h4>
+      <p><strong>Name:</strong> {{ selectedAppointment.user?.username }}</p>
+      <p><strong>Email:</strong> {{ selectedAppointment.user?.email }}</p>
+      <p><strong>Mobile:</strong> {{ selectedAppointment.user?.mobileNumber }}</p>
+
+    
+      <h4>Appointment</h4>
+      <p><strong>Date:</strong> {{ selectedAppointment.appointmentDate | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Slot:</strong> {{ selectedAppointment.slot }}</p>
+      <p><strong>Status:</strong> {{ selectedAppointment.status }}</p>
+      <p><strong>Payment Type:</strong> {{ selectedAppointment.paymentType }}</p>
+
+
+      <h4>Service</h4>
+      <p><strong>Service Name:</strong> {{ selectedAppointment.service?.serviceName }}</p>
+      <p><strong>Service Price:</strong>— ₹{{ selectedAppointment.service?.servicePrice }}</p>
+      
+
+   
+      <h4>Vehicle</h4>
+      <p><strong>Vehicle Type:</strong>{{ selectedAppointment.vehicle?.vehicleType }}</p>
+      <p><strong>Brand Name:</strong>{{ selectedAppointment.vehicle?.brandName }}</p>
+      <p><strong>Model Name:</strong>{{ selectedAppointment.vehicle?.modelName }}</p>
+
+      <h4>Address</h4>
+      <p>{{ selectedAppointment.address?.line1 }}</p>
+      <p>{{ selectedAppointment.address?.city }}, {{ selectedAppointment.address?.state }}</p>
+      <p>{{ selectedAppointment.address?.country }} - {{ selectedAppointment.address?.postalCode }}</p>
+    </div>
+
+    
+    <div class="container-right">
+      <h3>Appointment Status</h3>
+      <div class="status-track">
+
+        <div [ngClass]="getStatusClass(0, selectedAppointment.status)">
+          <i class="fa-regular fa-clock"></i>
+          <label for>Pending</label>
+        </div>
+     
+        <div [ngClass]="getStatusClass(1, selectedAppointment.status)">
+          <i class="fa-solid fa-calendar-check"></i>
+          <label for>Scheduled</label>
+        </div>
+ 
+        <div [ngClass]="getStatusClass(2, selectedAppointment.status)">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <label for>In Progress</label>
+        </div>
+  
+        <div [ngClass]="getStatusClass(3, selectedAppointment.status)">
+          <i class="fa-solid fa-circle-check"></i>
+          <label for>Completed</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

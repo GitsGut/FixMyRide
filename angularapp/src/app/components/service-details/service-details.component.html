@@ -1,0 +1,73 @@
+<div class="service-details-page">
+  <!-- Top Section -->
+  <div class="top-section">
+    <!-- Left: Image -->
+    <div class="image-section">
+      <img class="main-image"
+          src="../../../assets/bikeTyreRepairimage.jpg"
+           alt="{{ service?.serviceName }}" />
+    </div>
+ 
+    <!-- Right: Service Info -->
+    <div class="details-section">
+      <h1>{{ service?.serviceName }}</h1>
+      <p class="price">₹{{ service?.servicePrice }}</p>
+      <p class="short-description">{{ service?.shortDescription }}</p>
+ 
+      <div class="description-section">
+        <h3>About This Service</h3>
+        <p>{{ service?.longDescription }}</p>
+      </div>
+      <div *ngIf="service.status === 'ACTIVE'; else unavailable">
+        <button class="book-btn" (click)="bookAppointment(service.serviceId); $event.stopPropagation()">
+          <i class="bi bi-calendar-check-fill me-2"></i>Book Appointment
+        </button>
+      </div>
+      <ng-template #unavailable>
+        <p style="color: red; font-weight: bold;">Service is unavailable</p>
+        </ng-template>
+    </div>
+  </div>
+ 
+  <!-- Ratings & Feedback -->
+  <div class="ratings-feedback-section">
+    <!-- Rating Summary -->
+    <div class="rating-summary-box">
+      <h2>{{ averageRating }} <span>/5</span></h2>
+      <div class="stars">
+        <i *ngFor="let star of [1,2,3,4,5]" class="bi"
+           [ngClass]="star <= averageRating ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+      </div>
+      <p>{{ totalRatings }} Ratings</p>
+    </div>
+ 
+    <!-- Rating Breakdown -->
+    <div class="rating-breakdown">
+      <div *ngFor="let item of ratingBreakdown" class="rating-bar">
+        <span>{{ item.label }}</span>
+        <div class="bar">
+          <div class="fill" [style.width.%]="item.percentage"></div>
+        </div>
+        <span>{{ item.count }}</span>
+      </div>
+    </div>
+ 
+    <!-- Recent Feedback -->
+    <div class="recent-feedback">
+      <h4>Recent Feedbacks</h4>
+      <div *ngFor="let fb of feedbacks" class="feedback-card">
+        <div class="feedback-header">
+         <img src=" ../../../assets/profilelogo.webp" alt="" class="user-img">
+          <div>
+            <h5>{{ fb.user?.username }}</h5>
+            <div class="stars">
+              <i *ngFor="let star of [1,2,3,4,5]" class="bi"
+                 [ngClass]="star <= fb.rating ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+            </div>
+          </div>
+        </div>
+        <p class="feedback-text">{{ fb.message }}</p>
+      </div>
+    </div>
+  </div>
+</div>

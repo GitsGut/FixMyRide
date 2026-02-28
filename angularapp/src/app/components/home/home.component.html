@@ -1,0 +1,226 @@
+<div *ngIf="!role">
+ 
+  <div class="hero-section d-flex align-items-center vh-100 text-white position-relative"
+    style="background-image: url('assets/background.webp'); background-size: cover; background-position: center;">
+ 
+    <!-- Content -->
+    <div class="container position-relative text-start">
+      <h1 class="display-3 fw-bold mb-3 ">FIXMYRIDE</h1>
+      <h2 class="fw-semibold mb-4 " style="font-size: 2.5rem;">We Are Qualified & Professional.</h2>
+      <p class="lead mb-4" style="max-width: 600px;">
+        Expert vehicle servicing for safety, efficiency, and performance. From routine maintenance to major repairs, we
+        deliver reliable and affordable solutions tailored to your needs.
+      </p>
+ 
+    </div>
+  </div>
+ 
+  <!-- Features Section -->
+  <div id="features" class="container py-5">
+    <h2 class="text-center fw-bold mb-4 ">Our Key Features</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4 ">
+        <div class="p-4 border rounded shadow-sm">
+          <h5>Expert Technicians</h5>
+          <p>Certified professionals ensuring top-notch service for your vehicle.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 ">
+        <div class="p-4 border rounded shadow-sm">
+          <h5>Quick Service</h5>
+          <p>Fast and reliable maintenance to get you back on the road quickly.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 ">
+        <div class="p-4 border rounded shadow-sm">
+          <h5>Affordable Pricing</h5>
+          <p>Competitive rates without compromising on quality and safety.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- User Count Section -->
+  <div class="bg-dark text-white py-5 text-center">
+    <h2 class="fw-bold mb-3">Trusted by Thousands</h2>
+    <p class="fs-4 mb-4">Join our growing community of satisfied customers!</p>
+    <div class="d-flex justify-content-center gap-5">
+      <div class="counter-box">
+        <h3 class="display-4 fw-bold text-warning" id="userCount">1000+</h3>
+        <p>Active Users</p>
+      </div>
+      <div class="counter-box">
+        <h3 class="display-4 fw-bold text-warning" id="serviceCount">5000+</h3>
+        <p>Services Completed</p>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+<div *ngIf="role == 'USER'">
+ 
+  <div class="hero-section d-flex align-items-center vh-100 text-white position-relative"
+    style="background-image: url('assets/background.webp'); background-size: cover; background-position: center;">
+ 
+    <!-- Content -->
+    <div class="container position-relative text-start">
+      <h1 class="display-3 fw-bold mb-3 ">FIXMYRIDE</h1>
+      <h2 class="fw-semibold mb-4 " style="font-size: 2.5rem;">We Are Qualified & Professional.</h2>
+      <p class="lead mb-4" style="max-width: 600px;">
+        Expert vehicle servicing for safety, efficiency, and performance. From routine maintenance to major repairs, we
+        deliver reliable and affordable solutions tailored to your needs.
+      </p>
+
+      
+<div class="vehicle-ai-fab" *ngIf="!showChatbot" (click)="toggleChatbot()" onkeypress>
+  <span style="color: white; font-size: 12px;">Ask<br>Vehicle AI</span>
+</div>
+
+<app-vehicle-ai *ngIf="showChatbot" (close)="toggleChatbot()"></app-vehicle-ai>
+
+ 
+      <!-- Buttons -->
+      <div class="d-flex gap-3 ">
+        <!-- Read More Button -->
+        <a routerLink="/user/vehicle/selection" class="btn btn-danger">
+          Explore Services
+        </a>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- Features Section -->
+  <div id="features" class="container py-5">
+    <h2 class="text-center fw-bold mb-4 ">Our Key Features</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4 ">
+        <div class="p-4 border rounded shadow-sm">
+          <h5>Expert Technicians</h5>
+          <p>Certified professionals ensuring top-notch service for your vehicle.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 ">
+        <div class="p-4 border rounded shadow-sm">
+          <h5>Quick Service</h5>
+          <p>Fast and reliable maintenance to get you back on the road quickly.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 ">
+        <div class="p-4 border rounded shadow-sm">
+          <h5>Affordable Pricing</h5>
+          <p>Competitive rates without compromising on quality and safety.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- User Count Section -->
+  <div class="bg-dark text-white py-5 text-center">
+    <h2 class="fw-bold mb-3">Trusted by Thousands</h2>
+    <p class="fs-4 mb-4">Join our growing community of satisfied customers!</p>
+    <div class="d-flex justify-content-center gap-5">
+      <div class="counter-box">
+        <h3 class="display-4 fw-bold text-warning" id="userCount">1000+</h3>
+        <p>Active Users</p>
+      </div>
+      <div class="counter-box">
+        <h3 class="display-4 fw-bold text-warning" id="serviceCount">5000+</h3>
+        <p>Services Completed</p>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+ 
+<div *ngIf="role == 'ADMIN'">
+  <div class="hero-section admin-hero d-flex align-items-center vh-100 text-white position-relative"
+    style="background-image: url('assets/background.webp'); background-size: cover; background-position: center;">
+ 
+    <!-- Content -->
+    <div class="container position-relative text-start content">
+      <h1 class="display-3 fw-bold mb-3">ADMIN DASHBOARD</h1>
+      <h2 class="fw-semibold mb-4" style="font-size: 2.5rem;">Manage & Monitor Efficiently</h2>
+      <p class="lead mb-4" style="max-width: 600px;">
+        Access all administrative tools in one place. Monitor services, appointments, and user activities with ease.
+      </p>
+ 
+      <!-- Buttons -->
+      <div class="d-flex gap-3">
+        <a class="btn btn-animated" style="background:#dc3545;" (click)="goToFeedback()" >Manage Services</a>
+        <a class="btn btn-outline btn-animated">View Reports</a>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Admin Features Section -->
+  <div id="admin-features" class="admin-features">
+    <h2 class="fw-bold mb-4">Admin Key Features</h2>
+    <div class="feature-grid">
+      <div class="feature-box">
+        <h5>Service Management</h5>
+        <p>Add, update, and organize services seamlessly.</p>
+      </div>
+      <div class="feature-box">
+        <h5>Appointment Tracking</h5>
+        <p>Monitor and manage user appointments efficiently.</p>
+      </div>
+      <div class="feature-box">
+        <h5>User Control</h5>
+        <p>Manage user accounts and roles with full control.</p>
+      </div>
+      <div class="feature-box">
+        <h5>Reports & Analytics</h5>
+        <p>Generate insights and performance reports instantly.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <div>
+    <div class="bg-dark text-white py-5 text-center stats-section ">
+      <h2 class="fw-bold mb-3">Admin Stats</h2>
+      <p class="fs-4 mb-4">Quick overview of your platform performance</p>
+      <div class="d-flex justify-content-center gap-5 flex-wrap stats-grid">
+        <div class="counter-box">
+          <h3 class="display-4 fw-bold text-warning">120+</h3>
+          <p>Services</p>
+        </div>
+        <div class="counter-box">
+          <h3 class="display-4 fw-bold text-warning">350+</h3>
+          <p>Appointments</p>
+        </div>
+        <div class="counter-box">
+          <h3 class="display-4 fw-bold text-warning">200+</h3>
+          <p>Feedbacks</p>
+        </div>
+        <div class="counter-box">
+          <h3 class="display-4 fw-bold text-warning">50+</h3>
+          <p>Users</p>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>
+<div *ngIf="role == 'SUPER_ADMIN'">
+  <!-- Super Admin Hero Section -->
+  <div class="hero-section super-admin-hero d-flex align-items-center vh-100 text-white position-relative"
+    style="background-image: url('assets/background.webp'); background-size: cover; background-position: center;">
+ 
+    <!-- Content -->
+    <div class="container position-relative text-start content">
+      <h1 class="display-3 fw-bold mb-3">SUPER ADMIN DASHBOARD</h1>
+      <h2 class="fw-semibold mb-4" style="font-size: 2.5rem;">Full Control & Insights</h2>
+      <p class="lead mb-4" style="max-width: 600px;">
+        Access advanced tools to manage admins, users, and monitor platform performance with complete authority.
+      </p>
+ 
+      <!-- Buttons -->
+      <div class="d-flex gap-3">
+        <a class="btn btn-animated" style="background:#dc3545;" routerLink="/user/super/dashboard"  >Manage Admins</a>
+        <a class="btn btn-outline btn-animated" >View Analytics</a>
+      </div>
+    </div>
+  </div>
+</div>
+ 

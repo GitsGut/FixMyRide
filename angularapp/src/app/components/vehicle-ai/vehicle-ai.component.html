@@ -1,0 +1,28 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h3>Vehicle Service Assistant</h3>
+  </div>
+
+  <div class="chat-messages">
+    <div *ngFor="let msg of messages" [ngClass]="{'user': msg.sender === 'user', 'bot': msg.sender === 'bot'}">
+      <div class="message">{{ msg.text }}</div>
+    </div>
+    <div *ngIf="isLoading" class="loading">Typing...</div>
+  </div>
+
+  <form (ngSubmit)="sendMessage()" class="chat-input">
+    <input
+      type="text"
+      [(ngModel)]="userInput"
+      name="message"
+      placeholder="Ask about vehicle services..."
+      required
+    />
+    <button type="submit">Send</button>
+  </form>
+
+  <!-- Close Button -->
+  <div class="chat-close">
+    <button (click)="closeChatbot()">✖ Close</button>
+  </div>
+</div>

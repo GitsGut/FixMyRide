@@ -1,0 +1,67 @@
+<div class="feedback-wrapper d-flex justify-content-center align-items-center min-vh-100 bg-light">
+  <div class="card shadow-lg" style="width: 100%; max-width: 600px; border-radius: 20px;">
+    <div class="card-header text-center bg-dark text-white rounded-top">
+      <h3 class="mb-0 ">Share Your Feedback</h3>
+    </div>
+
+    <div class="card-body p-4">
+      <!-- Service Info -->
+      <div class="mb-4 text-center" *ngIf="appointment?.service">
+        <h5 class="fw-bold text-danger">{{ appointment.service.serviceName }}</h5>
+        <p class="text-muted">{{ appointment.service.shortDescription }}</p>
+      </div>
+
+      <form #frm="ngForm" (ngSubmit)="addFeedback(frm)" novalidate>
+        <!-- Feedback Message -->
+        <div class="mb-4">
+          <label for="message" class="form-label fw-semibold">Your Feedback:</label>
+          <textarea
+            name="message"
+            id="message"
+            class="form-control border-secondary"
+            rows="4"
+            [(ngModel)]="feedback.message"
+            #message="ngModel"
+            required
+            maxlength="100"
+            minlength="5"
+            [ngClass]="{'is-invalid': message.touched && message.invalid}"
+            placeholder="Write your thoughts here..."
+          ></textarea>
+          <div class="invalid-feedback" *ngIf="message.touched && message.invalid">
+            <span *ngIf="message.errors['required']">Message is required.</span>
+            <span *ngIf="message.errors['minlength']">Minimum 5 characters required.</span>
+          </div>
+        </div>
+
+        <!-- Rating Dropdown -->
+        <div class="mb-4">
+          <label for="rating" class="form-label fw-semibold">Rate Us:</label>
+          <select
+            name="rating"
+            id="rating"
+            class="form-select"
+            [(ngModel)]="feedback.rating"
+            #rating="ngModel"
+            required
+          >
+            <option value="" disabled>Select a rating</option>
+            <option *ngFor="let star of stars" [value]="star">{{ star }}</option>
+          </select>
+          <div *ngIf="rating.invalid && frm.submitted" class="text-danger small mt-1">
+            Please select a rating.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn btn-danger w-100 fw-bold"
+          [disabled]="frm.invalid"
+        >
+          Submit Feedback
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+# ===== ANGULAR =====
+angularapp/node_modules/
+angularapp/dist/
+
+# SECRETS
+angularapp/src/environments/environment.ts
+angularapp/src/environments/environment.prod.ts
+angualapp/src/app/constants/app.constants.ts

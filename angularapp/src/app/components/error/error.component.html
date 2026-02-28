@@ -1,0 +1,11 @@
+<div class="toast-container" *ngIf="message">
+  <div class="toast">
+    <div class="toast-icon">⚠️</div>
+    <div class="toast-message">
+      <strong>Error</strong>
+      <p>{{ message }}</p>
+    </div>
+    <button class="toast-close" (click)="dismiss()">×</button>
+    <div class="toast-progress"></div>
+  </div>
+</div>

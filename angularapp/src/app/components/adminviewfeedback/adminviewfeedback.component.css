@@ -1,0 +1,111 @@
+/* Dashboard Charts Row */
+.dashboard-charts {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.chart-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.bar-chart-box {
+  flex: 1;
+  /* min-width: 100px; */
+  align-items: center;
+}
+
+.chart-box canvas {
+  /* max-width: 450px; */
+  height: 150px;
+}
+
+/* Satisfaction Charts Column */
+.summary-charts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Summary Boxes */
+.summary-boxes {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.summary-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 120px;
+}
+
+.summary-box.total {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.summary-box h5 {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.summary-box p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Feedback Cards */
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedback-message {
+  margin-top: 10px;
+  word-wrap: break-word;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-charts {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bar-chart-box {
+    width: 100%;
+  }
+
+  .summary-charts {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+}

@@ -1,0 +1,146 @@
+
+.vehicle {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: url('../../../assets/background.webp') no-repeat center center/cover;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.vehicle-section {
+  min-height: calc(100vh); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.select {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 900px;
+  width: 90%;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.select h2 {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+
+.vehicle-box {
+  width: 220px;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #dc3545;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+}
+
+.vehicle-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.vehicle-box .icon {
+  font-size: 4rem;
+  color: #dc3545;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.vehicle-box h4 {
+  margin-top: 10px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+
+.vehicle-form {
+  max-width: 500px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 50px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  height: 80vh;
+  width: 40vw;
+  position: relative;
+  bottom: 40px;
+}
+
+.vehicle-form h4 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #fff;
+}
+
+.form-select {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #dc3545;
+  color: #fff;
+}
+
+.form-select option {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+.text-end{
+  margin-left: 100px;
+}
+.btn-back {
+  background-color: transparent;
+  margin-left: 30px;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+  border-radius: 50%;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #fff;
+  color: #000;
+}

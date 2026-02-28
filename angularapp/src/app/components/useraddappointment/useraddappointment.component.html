@@ -1,0 +1,166 @@
+<app-error *ngIf="isError" [message]="errorMessage"></app-error>
+
+<div class="bigContainer">
+  <div class="page-center">
+    <div *ngIf="showDateTimeSelection" class="mybox">
+      <h2>Select Date</h2>
+      <div class="date-buttons">
+        <button *ngFor="let date of dates" [class.selected]="selectedDate === date.value"
+          (click)="selectDate(date.value)">
+          {{ date.label }}
+        </button>
+      </div>
+      <h3 class="bi bi-sun ">Morning Slots</h3>
+      <div class="slot-buttons">
+        <button *ngFor="let slot of morningSlots" [class.selected]="selectedSlot === slot" (click)="selectSlot(slot)">
+          {{ slot }}
+        </button>
+      </div>
+  
+      <h3 class=" bi bi-brightness-high">Afternoon Slots</h3>
+      <div class="slot-buttons">
+        <button *ngFor="let slot of afternoonSlots" [class.selected]="selectedSlot === slot" (click)="selectSlot(slot)">
+          {{ slot }}
+        </button>
+      </div>
+  
+      <h3 class="bi bi-moon">Evening Slots</h3>
+      <div class="slot-buttons">
+        <button *ngFor="let slot of eveningSlots" [class.selected]="selectedSlot === slot" (click)="selectSlot(slot)">
+          {{ slot }}
+        </button>
+      </div>
+  
+      <button class="continue-button" (click)="continueToAddress()">CONTINUE</button>
+    </div>
+
+  
+  <div *ngIf="showOnlyAddress" class="address-section">
+    <h2>Enter Your Address</h2>
+  
+    <form class="address-form" #addressForm="ngForm">
+  
+      <div class="form-group">
+        <label for="line1">Address Line 1:<span style="color: red;">*</span></label>
+        <input id="line1" type="text" [(ngModel)]="newAddress.line1" name="line1" required #line1="ngModel">
+        <div class="error" *ngIf="line1.invalid && line1.touched">Address Line 1 is required.</div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="line2">Address Line 2:<span style="color: red;">*</span></label>
+        <input id="line2" type="text" [(ngModel)]="newAddress.line2" name="line2" #line2="ngModel">
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="country">Country:<span style="color: red;">*</span></label>
+        <input id="country" type="text" [(ngModel)]="newAddress.country" name="country" required #country="ngModel"
+          placeholder="India">
+        <div class="error" *ngIf="country.invalid && country.touched">Country is required.</div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="state">State:<span style="color: red;">*</span></label>
+        <select id="state" [(ngModel)]="newAddress.state" name="state" required #state="ngModel"
+          (ngModelChange)="onStateChange()">
+          <option value="" disabled>Select State</option>
+          <option *ngFor="let s of states" [value]="s">{{ s }}</option>
+        </select>
+        <div class="error" *ngIf="state.invalid && state.touched">State is required.</div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="city">City:<span style="color: red;">*</span></label>
+        <select id="city" [(ngModel)]="newAddress.city" name="city" [disabled]="!newAddress.state" required
+          #city="ngModel">
+          <option value="" disabled>Select City</option>
+          <option *ngFor="let c of citiesForSelectedState" [value]="c">{{ c }}</option>
+        </select>
+        <div class="error" *ngIf="city.invalid && city.touched">City is required.</div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="postal-code">Postal Code:<span style="color: red;">*</span></label>
+        <input id="postal-code" type="text" [(ngModel)]="newAddress.postalCode" name="postalCode" required
+          #postalCode="ngModel" pattern="^[1-9][0-9]{5}$" inputmode="numeric" maxlength="6">
+        <div class="error" *ngIf="postalCode.touched && postalCode.invalid">
+          <ng-container *ngIf="postalCode.errors?.required">
+            Postal Code is required.
+          </ng-container>
+          <ng-container *ngIf="postalCode.errors?.pattern">
+            Enter a valid 6‑digit PIN code (no leading 0).
+          </ng-container>
+        </div>
+      </div>
+  
+      <button type="button" class="submit-button" (click)="submitAddress(addressForm)">Next</button>
+    </form>
+  </div>
+  
+  
+  <div *ngIf="showOnlyPayement" class="payment-section">
+    <div class="payment-card">
+      <h1 class="payment-heading">Select Payment Method</h1>
+  
+      <div class="payment-options">
+        <label class="payment-option">
+          <input type="radio" [checked]="paymentType === 'payInCash'"
+            (change)="onPaymentCheckboxChange('payInCash', $event)">
+          Pay in Cash
+        </label>
+  
+        <label class="payment-option">
+          <input type="radio" [checked]="paymentType === 'payOnline'"
+            (change)="onPaymentCheckboxChange('payOnline', $event)">
+          Pay Online
+        </label>
+      </div>
+    </div>
+  
+  
+  
+    <div *ngIf="showConfirmModel">
+      <div class="container-backdrop" (click)="cancelConfirm()" onkeypress></div>
+  
+      <div class="container" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+        <h3 id="confirmTitle">Confirm Order</h3>
+  
+        <div class="summary">
+          <h4>Appointment</h4>
+          <p><strong>Date:</strong> {{ selectedDate }}</p>
+          <p><strong>Slot:</strong> {{ selectedSlot }}</p>
+          <p><strong>Payment:</strong> {{ paymentType === 'payInCash' ? 'Pay in Cash' : 'Pay Online' }}</p>
+  
+          <h4>Service</h4>
+          <p><strong>Name:</strong> {{ service?.serviceName }}</p>
+          <p *ngIf="service?.servicePrice"><strong>Price:</strong> ₹{{ service?.servicePrice }}</p>
+          <p *ngIf="service?.shortDescription"><strong>Details:</strong> {{ service?.shortDescription }}</p>
+  
+          <h4>Vehicle</h4>
+          <p><strong>Brand:</strong> {{ vehicle?.brandName }}</p>
+          <p><strong>Model:</strong> {{ vehicle?.modelName }}</p>
+  
+          <h4>User</h4>
+          <p><strong>Name:</strong> {{ user?.username }}</p>
+          <p><strong>Email:</strong> {{ user?.email }}</p>
+          <p><strong>Phone:</strong> {{ user?.mobileNumber }}</p>
+  
+          <h4>Address</h4>
+          <p>{{ savedAddress?.line1 }}</p>
+          <p *ngIf="savedAddress?.line2">{{ savedAddress?.line2 }}</p>
+          <p>{{ savedAddress?.city }}, {{ savedAddress?.state }}</p>
+          <p>{{ savedAddress?.country }} - {{ savedAddress?.postalCode }}</p>
+        </div>
+  
+        <div class="container-actions">
+          <button class="submit-button" (click)="confirmOrder()">Place Order</button>
+          <button class="secondary-button" (click)="cancelConfirm()">Cancel</button>
+        </div>
+      </div>
+</div>
+
+</div>

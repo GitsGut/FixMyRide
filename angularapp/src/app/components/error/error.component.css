@@ -1,0 +1,80 @@
+.toast-container {
+  position: fixed;
+  top: 30px; /* Distance from top */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+}
+.toast {
+  background: #fff0f0;
+  color: #b00020;
+  border-left: 6px solid #b00020;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+  max-width: 400px;
+  animation: slideFadeIn 0.4s ease-out forwards;
+  position: relative;
+  pointer-events: auto;
+}
+
+.toast-icon {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.toast-message {
+  flex: 1;
+}
+
+.toast-message p {
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #b00020;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: #b00020;
+  animation: shrinkBar 3s linear forwards;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes shrinkBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

@@ -1,0 +1,33 @@
+.login-container {
+    background: url('../../../assets/loginpage.png') no-repeat center center/cover;
+    min-height: 100vh;
+  }
+ 
+  /* Glassmorphism card */
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.7); /* White with transparency */
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    color: #000; /* Black text */
+  }
+ 
+  /* Inputs */
+  .form-control {
+    border: 1px solid #000;
+  }
+ 
+  .form-control:focus {
+    border-color: #000;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+ 
+  /* Button */
+  .btn-dark {
+    background-color: #000;
+    color: #fff;
+    border-radius: 8px;
+  }

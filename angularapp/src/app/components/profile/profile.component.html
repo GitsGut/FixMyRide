@@ -1,0 +1,58 @@
+<!-- Dialog Box Wrapper -->
+<div class="profile">
+  <div class="model">
+    <div class="modal-content profile-dialog">
+      <!-- Profile Header -->
+      <div class="profile-header">
+        <h3>User Profile</h3>
+        <img class="edit-icon rounded-circle me-2" src="assets/edit.png" alt="edit icon" (click)="enableEdit()"
+          (keydown.enter)="enableEdit()" *ngIf="!isEditMode">
+      </div>
+
+     
+      <div class="profile-view" *ngIf="!isEditMode && user">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Mobile Number:</strong> {{ user.mobileNumber }}</p>
+        <button class="close-btn" (click)="goBack()">×</button>
+      </div>
+
+      
+      <form [formGroup]="profileForm" (ngSubmit)="onUpdateProfile()" *ngIf="isEditMode">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" />
+
+        <label for="mobile">Mobile Number</label>
+        <input id="mobile" type="text" formControlName="mobileNumber" />
+
+        <div class="button-group">
+          <button type="submit" class="btn-success" [disabled]="profileForm.invalid">Update</button>
+          <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+
+
+  </div>
+</div>
+
+<div *ngIf="showOtpInputModal" class="show-otp-modal">
+  <div class="modal-content">
+    <h4>{{ verificationMethod === 'PHONE' ? 'Enter Mobile OTP' : 'Enter Email OTP' }}</h4>
+    <div class="otp-boxes">
+      <input *ngFor="let digit of otpInputs; let i = index" maxlength="1" class="otp-input" [value]="otpInputs[i]"
+        (input)="onOtpInput(i, $event)" />
+    </div>
+    <button class="btn btn-primary mt-3" (click)="verifyOtp()">Validate OTP</button>
+
+    <a class="resend-link d-block mt-2" (click)="resendOtp()">Resend OTP</a>
+
+ 
+    <p class="text-danger mt-2" *ngIf="otpErrorMessage">{{ otpErrorMessage }}</p>
+
+   
+    <p *ngIf="!otpExpired">Time left: {{ timeLeft }} seconds</p>
+
+  </div>
+</div>

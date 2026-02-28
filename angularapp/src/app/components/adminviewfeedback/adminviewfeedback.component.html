@@ -1,0 +1,53 @@
+<div *ngIf="!isLoading" class="container mt-4">
+  
+  <!-- Charts Row -->
+  <div class="dashboard-charts">
+    <div class="summary-boxes">
+      <div class="summary-box total">
+        <h5>Total Feedbacks</h5>
+        <p>{{ feedbacks.length }}</p>
+      </div>
+      <div class="summary-box" *ngFor="let star of [5,4,3,2,1]; let i = index">
+        <h5>{{ star }} Star</h5>
+        <p>{{ ratingCounts[star - 1] }}</p>
+      </div>
+    </div>
+    <!-- Bar Chart -->
+    <div class="chart-box bar-chart-box">
+      <h4 class="fw-bold mb-3">Overall Feedback Rating Distribution</h4>
+      <canvas id="feedbackBarChart" style="height: 200px; width: 300px; "></canvas>
+    </div>
+
+    <!-- Satisfaction Charts -->
+    <div class="summary-charts">
+      <div class="chart-box">
+        <h5>Satisfied</h5>
+        <canvas id="satisfiedChart" style="height: 115px;"></canvas>
+      </div>
+      <div class="chart-box">
+        <h5>Unsatisfied</h5>
+        <canvas id="unsatisfiedChart" style="height: 115px;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Boxes -->
+  
+
+  <!-- Feedback Cards -->
+  <div class="feedback-list">
+    <div class="feedback-card" *ngFor="let feedback of feedbacks">
+      <div class="feedback-header">
+        <div class="user-info">
+          <h5>{{ feedback.user.username }}</h5>
+          <p class="service-name">{{ feedback.service.serviceName }}</p>
+        </div>
+        <div class="stars">
+          <i *ngFor="let star of [1,2,3,4,5]" class="bi"
+             [ngClass]="star <= feedback.rating ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+        </div>
+      </div>
+      <p class="feedback-message">{{ feedback.message }}</p>
+    </div>
+  </div>
+</div>
