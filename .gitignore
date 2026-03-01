@@ -1,24 +1,12 @@
+# ===== ANGULAR =====
+angularapp/node_modules/
+angularapp/dist/
 
-# Database backup
-appdb_backup.sql
-
-# Spring Boot sensitive files
-springapp/src/main/resources/application.properties
-springapp/src/main/resources/application-default.properties
-
-# Angular environment files
+# SECRETS
 angularapp/src/environments/environment.ts
 angularapp/src/environments/environment.prod.ts
-angualarpp/src/app/constants/app.constants.ts
 
 
-# Build outputs
-springapp/target/
-angularapp/dist/
-angularapp/node_modules/
-s
-# Logs
-springapp/*.log
 
 # ===== SPRING BOOT =====
 springapp/target/
@@ -26,6 +14,10 @@ springapp/*.jar
 springapp/*.war
 springapp/*.class
 
+# SECRETS - NEVER PUSH
+springapp/target/
+springapp/src/main/resources/application.properties
+springapp/src/main/resources/application-default.properties
 
 # IDE
 .idea/
