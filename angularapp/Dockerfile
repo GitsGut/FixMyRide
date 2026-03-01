@@ -1,13 +1,13 @@
 # Stage 1: Build the Angular app
-FROM node:16.13.0-alpine AS builder
+FROM node:14-alpine AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --force
 
 COPY . .
-RUN node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng build --prod
+RUN npm run build -- --prod
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
