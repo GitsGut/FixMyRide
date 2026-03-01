@@ -15,7 +15,7 @@
                 @Override
                 public void addCorsMappings(CorsRegistry registry) {
                     registry.addMapping("/**")
-                            .allowedOrigins("http://localhost:8081")
+                        .allowedOrigins("http://localhost:8081", "http://localhost", "http://localhost:80", "https://your-render-app.onrender.com")
                             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                             .allowedHeaders("*").allowCredentials(true)
                             .maxAge(3600);

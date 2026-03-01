@@ -44,7 +44,12 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(java.util.List.of("http://localhost:8081"));
+      configuration.setAllowedOrigins(java.util.List.of(
+    "http://localhost:8081",
+    "http://localhost",
+    "http://localhost:80",
+    "https://your-render-app.onrender.com"
+));
         configuration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(java.util.List.of("*"));
         configuration.setAllowCredentials(true);
