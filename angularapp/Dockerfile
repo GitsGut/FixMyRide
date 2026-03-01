@@ -7,13 +7,21 @@ COPY package*.json ./
 RUN npm install --legacy-peer-deps
 
 COPY . .
-RUN NODE_OPTIONS=--openssl-legacy-provider npm run build -- --prod
+RUN node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng build --prod
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
 
 COPY --from=builder /app/dist/angularapp /usr/share/nginx/html
 
-EXPOSE 80
+RUN echo 'server { \
+    listen 80; \
+    location / { \
+        root /usr/share/nginx/html; \
+        index index.html; \
+        try_files $uri $uri/ /index.html; \
+    } \
+}' > /etc/nginx/conf.d/default.conf
 
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
