@@ -5,4 +5,4 @@ angularapp/dist/
 # SECRETS
 angularapp/src/environments/environment.ts
 angularapp/src/environments/environment.prod.ts
-angualapp/src/app/constants/app.constants.ts
+angualarpp/src/app/constants/app.constants.ts

@@ -1,1 +1,42 @@
-angularapp/src/app/components/bike-services/bike-services.component.ts
+
+# Database backup
+appdb_backup.sql
+
+# Spring Boot sensitive files
+springapp/src/main/resources/application.properties
+springapp/src/main/resources/application-default.properties
+
+# Angular environment files
+angularapp/src/environments/environment.ts
+angularapp/src/environments/environment.prod.ts
+angualarpp/src/app/constants/app.constants.ts
+
+
+# Build outputs
+springapp/target/
+angularapp/dist/
+angularapp/node_modules/
+s
+# Logs
+springapp/*.log
+
+# ===== SPRING BOOT =====
+springapp/target/
+springapp/*.jar
+springapp/*.war
+springapp/*.class
+
+
+# IDE
+.idea/
+*.iml
+.settings/
+.classpath
+.project
+
+
+
+# ===== GENERAL =====
+.vscode/
+.DS_Store
+*.log
