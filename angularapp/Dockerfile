@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm install --legacy-peer-deps
 
 COPY . .
-RUN npm run build -- --prod
+RUN NODE_OPTIONS=--openssl-legacy-provider npm run build -- --prod
 
 # Stage 2: Serve with Nginx
 FROM nginx:alpine
