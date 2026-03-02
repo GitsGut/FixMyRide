@@ -19,6 +19,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.http.HttpMethod;
+
 
 @Configuration
 @EnableWebSecurity
@@ -65,7 +67,7 @@ public class SecurityConfig {
         httpSecurity.csrf().disable()
         .cors().configurationSource(corsConfigurationSource())
         .and()
-        .authorizeHttpRequests()..requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+        .authorizeHttpRequests()..requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
         .requestMatchers("/api/register","/api/login","/api/welcome","/api/otp/**","/api/otp/verify","/api/gemini/ask","/api/user/send/email","/api/user/verify/email").permitAll()
         .requestMatchers("/api/user/**","/api/services/**","/api/appointment/**","/api/feedback/**","/api/vehicles/**" ,"/api/payment/**").authenticated()
         .anyRequest().authenticated()
