@@ -80,7 +80,7 @@ public class SecurityConfig {
         
         return httpSecurity.build();
     }
-// ,"/api/user/**"
+// ,"/api/user/**
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
