@@ -67,7 +67,7 @@ public class SecurityConfig {
         httpSecurity.csrf().disable()
         .cors().configurationSource(corsConfigurationSource())
         .and()
-        .authorizeHttpRequests()..requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+        .authorizeHttpRequests().requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
         .requestMatchers("/api/register","/api/login","/api/welcome","/api/otp/**","/api/otp/verify","/api/gemini/ask","/api/user/send/email","/api/user/verify/email").permitAll()
         .requestMatchers("/api/user/**","/api/services/**","/api/appointment/**","/api/feedback/**","/api/vehicles/**" ,"/api/payment/**").authenticated()
         .anyRequest().authenticated()
