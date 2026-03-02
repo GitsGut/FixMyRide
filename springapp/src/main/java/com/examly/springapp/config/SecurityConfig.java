@@ -48,7 +48,10 @@ public class SecurityConfig {
     "http://localhost:8081",
     "http://localhost",
     "http://localhost:80",
-        "https://fixmyride-frontend.onrender.com"  ));
+    "https://your-render-app.onrender.com",
+    "https://fixmyride-backend-avrd.onrender.com/api",
+        "https://fixmyride-frontend.onrender.com"  
+));
         configuration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(java.util.List.of("*"));
         configuration.setAllowCredentials(true);
